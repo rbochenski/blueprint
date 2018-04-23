@@ -69,12 +69,16 @@ class Blueprint
         $this->reader->addNamespace('Dingo\\Blueprint\\Annotation\\Method');
 
         AnnotationRegistry::registerLoader(function ($class) {
-            $path = __DIR__.'/'.str_replace(['Dingo\\Blueprint\\', '\\'], ['', DIRECTORY_SEPARATOR], $class).'.php';
+            $path = __DIR__.'/'.str_replace(['Dingo\\Blueprint\\', '\\'], ['', DIRECTORY_SEPARATOR], ucfirst($class)).'.php';
 
             if (file_exists($path)) {
                 require_once $path;
 
                 return true;
+            }
+
+            else {
+                throw new \RuntimeException("Class 'Dingo\\Blueprint\\" . ucfirst($class) . "' does not exists!");
             }
         });
     }
