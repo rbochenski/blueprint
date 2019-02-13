@@ -98,7 +98,11 @@ class RestResource extends Section
             $definition = $method.' '.$definition;
         }
 
-        return '# '.$this->getIdentifier().($definition == '/' ? '' : ' ['.$definition.']');
+
+        return
+            "# Group {$this->getIdentifier()}\n\n"
+            . '## '.$this->getIdentifier().($definition == '/' ? '' : ' ['.$definition.']')
+        ;
     }
 
     /**
