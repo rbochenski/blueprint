@@ -76,10 +76,6 @@ class Blueprint
 
                 return true;
             }
-
-            else {
-                throw new \RuntimeException("Class 'Dingo\\Blueprint\\" . ucfirst($class) . "' does not exists!");
-            }
         });
     }
 
